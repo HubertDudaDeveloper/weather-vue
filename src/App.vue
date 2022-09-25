@@ -3,6 +3,7 @@
     <main>
       <LocationWeather />
       <DashBoard />
+      <input v-model="location" @keypress="fetchWeather">
     </main>
   </div>
 </template>
@@ -27,7 +28,17 @@ export default Vue.extend({
     }
   },
   methods: {
-    
+    fetchWeather (e) {
+      if (e.key === 'Enter') {
+        fetch(`${this.api_base}weather?q=${this.location}&units=metric&APPID=${this.api_key}`)
+          .then(res => {
+            return res.json()
+          }).then(this.setResults)
+      }
+    },
+    setResults (results) {
+      this.weather = results
+    }
   }
 
 })
