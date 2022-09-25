@@ -1,29 +1,54 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <main>
+      <LocationWeather />
+      <DashBoard />
+    </main>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import LocationWeather from './components/LocationWeather.vue'
+import DashBoard from './components/DashBoard.vue'
 
 export default Vue.extend({
   name: 'App',
   components: {
-    HelloWorld
+    LocationWeather,
+    DashBoard
+  },
+  data () {
+    return {
+      api_key: '208a23c3738402ec171b42b98aa0f284',
+      api_base: 'https://api.openweathermap.org/data/2.5/',
+      location: '',
+      weather: {}
+    }
+  },
+  methods: {
+    
   }
+
 })
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'monserrat';
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+main {
+  min-height: 100vh;
+  padding: 25px;
 }
 </style>
